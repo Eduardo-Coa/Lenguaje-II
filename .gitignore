@@ -1,0 +1,10 @@
+# Archivos compilados de Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Entorno virtual
+.venv/
+
+# VS Code
+.vscode/
