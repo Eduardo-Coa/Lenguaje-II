@@ -30,13 +30,15 @@ class Cliente(Usuario):
 
     @property
     def direccion(self) -> str:
-        """Retorna la dirección de entrega del cliente (solo lectura)."""
+        """Retorna la dirección de entrega del cliente."""
         return self.__direccion
 
     @property
     def correo(self) -> str:
-        """Retorna el correo electrónico del cliente (solo lectura)."""
+        """Retorna el correo electrónico del cliente ."""
         return self.__correo
+    
+    # --------------------Metodos--------------------------------------------------
 
     def consultar_catalogo(self, catalogo: Catalogo) -> list:
         """Retorna la lista de productos disponibles en el catálogo."""
@@ -81,10 +83,7 @@ class Cliente(Usuario):
 # ------------------------------------ Bloque de prueba interactivo ------------------------------------------------------------------------
 # ------------------------------------------------------------------------------------------------------------------------------------------ 
 if __name__ == "__main__":
-    import sys
-    import os
-    sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
+    
     from Clases.Producto import Producto
     from Clases.DetallePedido import DetallePedido
     from Clases.PagoTarjeta import PagoTarjeta
@@ -98,7 +97,7 @@ if __name__ == "__main__":
 
     # Productos disponibles para la prueba
     productos = [
-        Producto(101, 'Ferrari"', 90_000.00, 10),
+        Producto(101, "Ferrari",  90_000.00, 10),
         Producto(102, "Lamborghini",   50_000.00, 50),
         Producto(103, "Porsche", 80_000.00, 25),
     ]

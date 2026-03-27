@@ -69,10 +69,6 @@ class Pedido:
             raise ValueError(
                 "El pedido debe estar empacado antes de asignar transporte"
             )
-        if not isinstance(empresa, ITransportadora):
-            raise ValueError(
-                "La empresa debe implementar ITransportadora"
-            )
  
         self.__transportadora = empresa
         self.__estado = Pedido.TRANSPORTE_ASIGNADO
@@ -89,10 +85,10 @@ class Pedido:
             else "sin asignar"
         )
         return (
-            f"Pedido(num={self.__numero_pedido}, "
-            f"estado={self.__estado}, "
-            f"orden={self.__orden.numero_orden}, "
-            f"envio={transp})"
+            f"Pedido # {self.__numero_pedido},\n "
+            f"Estado : {self.__estado},\n "
+            f"Orden  : {self.__orden.numero_orden},\n "
+            f"Envio  : {transp}\n"
         )
  
     def __repr__(self) -> str:

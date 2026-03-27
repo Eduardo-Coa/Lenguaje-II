@@ -20,23 +20,27 @@ class Usuario:
 
     @property
     def nombre(self) -> str:
-        """Retorna el nombre del usuario (solo lectura)."""
+        """Retorna el nombre del usuario."""
         return self.__nombre
 
     @property
     def user_id(self) -> str:
-        """Retorna el usuario (solo lectura)."""
+        """Retorna el usuario."""
         return self.__user_id
 
     @property
     def contrasena(self) -> str:
-        """Retorna la contraseña del usuario (solo lectura)."""
+        """Retorna la contraseña del usuario."""
         return self.__contrasena
+    
+    # --------------------Metodos--------------------------------------------------
 
     def validar_credenciales(self, user_id: str, contrasena: str) -> bool:
         """Verifica si las credenciales ingresadas coinciden con las almacenadas."""
         return self.__user_id == user_id and self.__contrasena == contrasena
-
+    
+    
+    
     def __str__(self) -> str:
         """Retorna una representación legible del usuario."""
         return f"Usuario(id={self.__user_id}, contrasena={self.__contrasena})"
