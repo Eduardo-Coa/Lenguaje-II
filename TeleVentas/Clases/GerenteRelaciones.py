@@ -12,6 +12,9 @@ class GerenteRelaciones(Usuario):
         super().__init__(user_id,nombre,contrasena)
         self.__quejas = []
 
+    @property
+    def quejas(self) -> list:
+        return self.__quejas
 
     "Metodos"
 

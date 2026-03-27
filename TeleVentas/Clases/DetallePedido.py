@@ -23,7 +23,7 @@ class DetallePedido:
          return self.__cantidad
     
     @property
-    def precio_unidad(self)->str:
+    def precio_unidad(self)->float:
          return self.__precio_unidad
     
     "Metodos"

@@ -1,4 +1,4 @@
-from Clases.OrdenCompra import OrdenCompra
+from Clases.OrdenCompra import OrdenCompra, EstadoOrden
 from Interfaces.ITransportadora import ITransportadora
 from Interfaces.IInvetario import IInventario
 from Clases.DetallePedido import DetallePedido
@@ -46,7 +46,7 @@ class Pedido:
             raise ValueError(
                 f"El pedido ya fue empacado. Estado: {self.__estado}"
             )
-        if self.__orden.estado != "confirmada":
+        if self.__orden.estado != EstadoOrden.CONFIRMADA:
             raise ValueError(
                 "Solo se pueden empacar órdenes confirmadas"
             )

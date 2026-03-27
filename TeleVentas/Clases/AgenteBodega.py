@@ -12,19 +12,14 @@ class AgenteBodega(Usuario):
         numero_bodega: int,
         nombre: str
         
-        )->None:        
+        )->None:
         super().__init__(user_id,nombre,contrasena)
         self.__numero_bodega = numero_bodega
-        self.__nombre = nombre.strip()
 
     @property
     def numero_bodega(self) ->int:
         return self.__numero_bodega
-    
-    @property
-    def nombre(self)-> str:
-        return self.__nombre
-    
+
     "Metodos"
 
     def consultar_orden(self, orden: OrdenCompra)->None:
@@ -47,7 +42,7 @@ class AgenteBodega(Usuario):
         empresa: ITransportadora
     )-> None:
         print(
-            f"Agente {self.__nombre} asignando transporte "
+            f"Agente {self.nombre} asignando transporte "
             f"al pedido {pedido.numero_pedido}."
         )
         pedido.asignar_transporte(empresa)
@@ -55,7 +50,7 @@ class AgenteBodega(Usuario):
     def __str__(self) -> str:
         return (
             f"AgenteBodega(num={self.__numero_bodega}, "
-            f"nombre={self.__nombre})"
+            f"nombre={self.nombre})"
         )
  
     def __repr__(self) -> str:

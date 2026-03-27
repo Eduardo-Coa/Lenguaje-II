@@ -1,7 +1,7 @@
 from Clases.Producto import Producto
 from Clases.DetallePedido import DetallePedido
 from Clases.PagoTarjeta import PagoTarjeta
-from Clases.OrdenCompra import OrdenCompra
+from Clases.OrdenCompra import OrdenCompra, EstadoOrden
 from Clases.Pedido import Pedido
 from Clases.Catalogo import Catalogo
 from Clases.Cliente import Cliente
@@ -193,7 +193,7 @@ def menu_agente(agente: AgenteBodega) -> None:
         opcion = input("\n  Opción: ").strip()
 
         if opcion == "1":
-            confirmadas = [o for o in ordenes if o.estado == "confirmada"]
+            confirmadas = [o for o in ordenes if o.estado == EstadoOrden.CONFIRMADA]
             if not confirmadas:
                 print("  No hay órdenes confirmadas.")
                 continue
@@ -215,7 +215,7 @@ def menu_agente(agente: AgenteBodega) -> None:
         elif opcion == "2":
             confirmadas = [
                 o for o in ordenes
-                if o.estado == "confirmada"
+                if o.estado == EstadoOrden.CONFIRMADA
                 and not any(p.orden.numero_orden == o.numero_orden for p in pedidos)
             ]
             if not confirmadas:
@@ -273,7 +273,7 @@ def menu_gerente(gerente: GerenteRelaciones) -> None:
         opcion = input("\n  Opción: ").strip()
 
         if opcion == "1":
-            quejas = gerente._GerenteRelaciones__quejas
+            quejas = gerente.quejas
             if not quejas:
                 print("  No hay quejas registradas.")
             else:

@@ -75,11 +75,12 @@ class Queja:
  
     def __str__(self) -> str:
         return (
-            f"Queja(num={self.__numero_queja}, "
-            f"fecha={self.__fecha}, "
-            f"motivo={self.__motivo}, "
-            f"estado={self.__estado}, "
-            f"cliente={self.__cliente.nombre})"
+            f"QUEJA # {self.__numero_queja} \n"
+            f"  fecha  : {self.__fecha}\n"
+            f"  motivo : {self.__motivo}\n"
+            f"  estado : {self.__estado}\n"
+            f"  cliente: {self.__cliente.nombre}\n"
+            
         )
  
     def __repr__(self) -> str:
