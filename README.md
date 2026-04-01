@@ -1,4 +1,5 @@
-[Televentas.pdf](https://github.com/user-attachments/files/26291233/Televentas.pdf)
+
+[Televentas.pdf](https://github.com/user-attachments/files/26392784/Televentas.pdf)
 
 La empresa TeleVentas desea desarrollar un sistema web para el soporte de compras a 
 distancia, de los productos que la empresa ofrece, por parte de sus clientes. Se prevé que 
@@ -67,7 +68,7 @@ compra y contiene la información necesaria para procesar el pago del cliente.
 
 
 
-[Museo UML.pdf](https://github.com/user-attachments/files/26291234/Museo.UML.pdf)
+[Museo UML.pdf](https://github.com/user-attachments/files/26392785/Museo.UML.pdf)
 
 Un museo desea que su Departamento de Informática desarrolle un software para 
 automatizar la gestión de sus obras. Sus requisitos son los siguientes:
