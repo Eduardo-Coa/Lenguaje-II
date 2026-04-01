@@ -35,8 +35,22 @@ class Cliente(Usuario):
 
     @property
     def correo(self) -> str:
-        """Retorna el correo electrónico del cliente ."""
+        """Retorna el correo electrónico del cliente."""
         return self.__correo
+
+    @direccion.setter
+    def direccion(self, nueva_direccion: str) -> None:
+        """Actualiza la dirección de entrega del cliente validando que no esté vacía."""
+        if not nueva_direccion or not nueva_direccion.strip():
+            raise ValueError("La dirección no puede estar vacía.")
+        self.__direccion = nueva_direccion
+
+    @correo.setter
+    def correo(self, nuevo_correo: str) -> None:
+        """Actualiza el correo electrónico del cliente validando que no esté vacío."""
+        if not nuevo_correo or not nuevo_correo.strip():
+            raise ValueError("El correo no puede estar vacío.")
+        self.__correo = nuevo_correo
     
     # --------------------Metodos--------------------------------------------------
 

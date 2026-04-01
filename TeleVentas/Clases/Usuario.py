@@ -33,14 +33,20 @@ class Usuario:
         """Retorna la contraseña del usuario."""
         return self.__contrasena
     
+    @contrasena.setter
+    def contrasena(self, nueva_contrasena: str) -> None:
+        """Actualiza la contraseña del usuario validando que no esté vacía."""
+        if not nueva_contrasena or not nueva_contrasena.strip():
+            raise ValueError("La contraseña no puede estar vacía.")
+        self.__contrasena = nueva_contrasena
+
     # --------------------Metodos--------------------------------------------------
 
     def validar_credenciales(self, user_id: str, contrasena: str) -> bool:
         """Verifica si las credenciales ingresadas coinciden con las almacenadas."""
         return self.__user_id == user_id and self.__contrasena == contrasena
     
-    
-    
+        
     def __str__(self) -> str:
         """Retorna una representación legible del usuario."""
         return f"Usuario(id={self.__user_id}, contrasena={self.__contrasena})"
