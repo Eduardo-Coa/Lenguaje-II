@@ -1,4 +1,4 @@
-package Clases;
+package ClasesTeleventas;
 
 import java.util.ArrayList;
 import java.util.List;

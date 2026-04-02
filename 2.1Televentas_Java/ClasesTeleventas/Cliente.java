@@ -1,4 +1,4 @@
-package Clases;
+package ClasesTeleventas;
 /**
  * Representa a un cliente del sistema TeleVentas.
  *

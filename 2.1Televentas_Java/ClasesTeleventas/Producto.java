@@ -1,4 +1,4 @@
-package Clases;
+package ClasesTeleventas;
 
 /**
  * Representa un producto disponible en el catalogo de TeleVentas.

@@ -1,4 +1,4 @@
-package Clases;
+package ClasesTeleventas;
 
 /**
  * Representa al agente de bodega del sistema TeleVentas.

@@ -1,4 +1,4 @@
-package Clases;
+package ClasesTeleventas;
 
 /**
  * Representa una empresa de transporte en TeleVentas.

@@ -1,4 +1,4 @@
-package Clases;
+package ClasesTeleventas;
 
 /**
  * Representa un pago con tarjeta de credito en TeleVentas.

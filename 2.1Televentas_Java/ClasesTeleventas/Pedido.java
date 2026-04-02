@@ -1,4 +1,4 @@
-package Clases;
+package ClasesTeleventas;
 
 /**
  * Representa el pedido fisico armado por el Agente de Bodega en TeleVentas.

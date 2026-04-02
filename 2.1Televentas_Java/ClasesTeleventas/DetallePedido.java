@@ -1,4 +1,4 @@
-package Clases;
+package ClasesTeleventas;
 
 /**
  * Representa una linea dentro de una orden de compra en TeleVentas.

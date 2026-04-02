@@ -1,4 +1,4 @@
-package Clases;
+package ClasesTeleventas;
 /**
  * Clase base para todos los usuarios del sistema TeleVentas.
  *
