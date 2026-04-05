@@ -339,7 +339,7 @@ QUEJA # 1
   cliente: Eduardo Coa
 
 ```
-**Agente Catalogo**
+**Agente Bodega**
 
 ```
 =======================================================
@@ -411,10 +411,33 @@ Pedido 5001 en despacho.
 ```
 ---
 
-**Agente Catalogo**
+**Gerete Relaciones**
 
 ```
+=======================================================
+  TELEVENTAS — Inicio de sesión
+=======================================================
+  Usuario    : ger01
+  Contraseña : ger123
 
+  Bienvenido/a, Diunis Pérez.
+
+=======================================================
+  MENÚ GERENTE — Diunis Pérez
+=======================================================
+  1. Ver quejas recibidas
+  0. Cerrar sesión
+
+  Opción: 1
+
+=======================================================
+  QUEJAS RECIBIDAS
+=======================================================
+  QUEJA # 1
+  fecha  : 2026-04-05
+  motivo : El pedido llegó con retraso de 3 días.
+  estado : en_revision
+  cliente: Eduardo Coa
 
 ```
 
