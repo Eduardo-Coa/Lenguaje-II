@@ -19,25 +19,47 @@ contador_queja = 1
 
 # ── Datos iniciales ────────────────────────────────────────────────────────────
 inventario = Inventario("http://api.televentas.com/inventario", "Inventario Central")
-inventario.registrar_producto(101, 'Televisor 55"',  1_200_000.00, 10)
-inventario.registrar_producto(102, "Control Remoto",    45_000.00, 50)
-inventario.registrar_producto(103, "Soporte de Pared",  80_000.00, 25)
+inventario.registrar_producto(101, "Ferrari",     90_000.00, 10)
+inventario.registrar_producto(102, "Lamborghini", 50_000.00, 50)
+inventario.registrar_producto(103, "Porsche",     80_000.00, 25)
 
-prod1 = Producto(101, 'Televisor 55"',  1_200_000.00, 10)
-prod2 = Producto(102, "Control Remoto",    45_000.00, 50)
-prod3 = Producto(103, "Soporte de Pared",  80_000.00, 25)
+prod1 = Producto(101, "Ferrari",     90_000.00, 10)
+prod2 = Producto(102, "Lamborghini", 50_000.00, 50)
+prod3 = Producto(103, "Porsche",     80_000.00, 25)
 productos_sistema = [prod1, prod2, prod3]
 
 catalogo = Catalogo(1, [prod1, prod2, prod3])
 transportadora = Transportadora(1, "TransRápido S.A.")
 
 # ── Usuarios registrados ───────────────────────────────────────────────────────
+_cliente_inicial = Cliente("cli01", "Eduardo Coa", "pass123", "Calle 47 #6-33", "dcoa_37@unisalle.edu.co")
+
 usuarios = [
-    Cliente("Ana_Garcia",    "Ana García",    "pass123", "Calle 45 #12-30", "ana@correo.com"),
-    Cliente("Carlos_Lopez",  "Carlos López",  "pass456", "Av. 68 #20-15",   "carlos@correo.com"),
-    AgenteBodega("Pedro_Martinez", "agent123", 5, "Pedro Martínez"),
-    GerenteRelaciones("Laura_Mendez", "ger789", "Laura Méndez"),
+    _cliente_inicial,
+    AgenteBodega("age01", "agent123", 5, "Pedro Martínez"),
+    GerenteRelaciones("ger01", "ger123", "Diunis Pérez"),
 ]
+
+# ── Orden inicial preestablecida ───────────────────────────────────────────────
+import io, sys as _sys
+_pago_inicial = PagoTarjeta(1001, 190_000.00, "1234567890123456", "Eduardo Coa", "12/26", "123")
+_orden_inicial = OrdenCompra(1001, _cliente_inicial, _pago_inicial,
+                             [DetallePedido(prod1, 1), DetallePedido(prod2, 2)], inventario)
+_stdout = _sys.stdout; _sys.stdout = io.StringIO()
+_orden_inicial.confirmar()
+_sys.stdout = _stdout
+ordenes.append(_orden_inicial)
+contador_orden = 1001
+
+# ── Queja inicial preestablecida ───────────────────────────────────────────────
+_gerente_inicial = next(u for u in usuarios if isinstance(u, GerenteRelaciones))
+_stdout = _sys.stdout; _sys.stdout = io.StringIO()
+_queja_inicial = _cliente_inicial.presentar_queja(1, "El pedido llegó con retraso de 3 días.")
+_queja_inicial.registrar_queja()
+_queja_inicial.remitir_gerente()
+_gerente_inicial.recibir_queja(_queja_inicial)
+_sys.stdout = _stdout
+contador_queja = 2
 
 
 # ── Utilidades ─────────────────────────────────────────────────────────────────
@@ -84,6 +106,7 @@ def menu_cliente(cliente: Cliente) -> None:
                 )
 
         elif opcion == "2":
+            separador("SUSCRIPCIÓN AL CATÁLOGO")
             try:
                 cliente.suscribir_catalogo(catalogo)
                 catalogo.enviar_catalogo(cliente)
@@ -91,6 +114,7 @@ def menu_cliente(cliente: Cliente) -> None:
                 print(f"  {e}")
 
         elif opcion == "3":
+            separador("BÚSQUEDA DE PRODUCTOS")
             termino = input("  Término de búsqueda: ").strip()
             resultados = catalogo.buscar_producto(termino)
             for p in resultados:
@@ -120,8 +144,13 @@ def menu_cliente(cliente: Cliente) -> None:
                     print(f"  {e}")
 
             if not detalles:
-                print("  Orden cancelada (sin productos).")
+                print("  Sin productos, orden no creada.")
                 continue
+
+            print("\n-- Resumen de la orden --")
+            for d in detalles:
+                print(f"  [{d.producto.numero_producto}] {d.producto.descripcion}  x{d.cantidad}  —  ${d.subtotal():,.2f}")
+            print(f"  TOTAL: ${sum(d.subtotal() for d in detalles):,.2f}")
 
             separador("DATOS DE PAGO — Tarjeta de crédito")
             try:
@@ -135,11 +164,13 @@ def menu_cliente(cliente: Cliente) -> None:
                 orden = OrdenCompra(contador_orden, cliente, pago, detalles, inventario)
                 orden.confirmar()
                 ordenes.append(orden)
-                print(orden)
+                print(f"\n{orden}")
+                print("  Orden pagada exitosamente.")
             except ValueError as e:
                 print(f"  Error: {e}")
 
         elif opcion == "5":
+            separador("CANCELAR ORDEN")
             mis_ordenes = [o for o in ordenes if o.cliente.user_id == cliente.user_id]
             if not mis_ordenes:
                 print("  No tienes órdenes registradas.")
@@ -158,18 +189,22 @@ def menu_cliente(cliente: Cliente) -> None:
                 print(f"  {e}")
 
         elif opcion == "6":
-            motivo = input("  Motivo de la queja: ").strip()
-            if not motivo:
-                print("  El motivo no puede estar vacío.")
-                continue
+            separador("REGISTRAR QUEJA")
             try:
+                num = int(input("  Número de orden(ej: 1001): "))
+                orden = next((o for o in ordenes if o.numero_orden == num and o.cliente.user_id == cliente.user_id), None)
+                if not orden:
+                    print("  Orden no encontrada.")
+                    continue
+                motivo = input("  Motivo de la queja: ").strip()
+                if not motivo:
+                    print("  El motivo no puede estar vacío.")
+                    continue
                 queja = cliente.presentar_queja(contador_queja, motivo)
                 contador_queja += 1
                 queja.registrar_queja()
                 queja.remitir_gerente()
-                gerente = next((u for u in usuarios if isinstance(u, GerenteRelaciones)), None)
-                if gerente:
-                    gerente.recibir_queja(queja)
+                print(f"\n{queja}")
             except ValueError as e:
                 print(f"  {e}")
 
@@ -293,10 +328,9 @@ print("\n  Bienvenido al sistema TeleVentas")
 print("  " + "-" * 52)
 print(f"  {'Usuario':<20} {'Rol':<18} {'Contraseña'}")
 print("  " + "-" * 52)
-print(f"  {'Ana_Garcia':<20} {'Cliente':<18} pass123")
-print(f"  {'Carlos_Lopez':<20} {'Cliente':<18} pass456")
-print(f"  {'Pedro_Martinez':<20} {'Agente Bodega':<18} agent123")
-print(f"  {'Laura_Mendez':<20} {'Gerente':<18} ger789")
+print(f"  {'cli01':<20} {'Cliente':<18} pass123")
+print(f"  {'age01':<20} {'Agente Bodega':<18} agent123")
+print(f"  {'ger01':<20} {'Gerente':<18} ger123")
 print("  " + "-" * 52)
 
 while True:

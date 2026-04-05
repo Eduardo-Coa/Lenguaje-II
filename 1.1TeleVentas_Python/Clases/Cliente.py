@@ -78,7 +78,7 @@ class Cliente(Usuario):
         """Registra y retorna una queja del cliente indicando el motivo."""
         from Clases.Queja import Queja
         queja = Queja(numero_queja, motivo, self)
-        print(f"Queja registrada para el cliente {self.nombre}.")
+        print(f"Queja registrada, Cliente: {self.nombre}.")
         return queja
 
     def __str__(self) -> str:

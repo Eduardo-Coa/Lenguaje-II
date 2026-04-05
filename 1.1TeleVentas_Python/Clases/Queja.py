@@ -70,9 +70,7 @@ class Queja:
                 f"La queja ya fue procesada. Estado: {self.__estado}"
             )
         print(
-            f"Queja {self.__numero_queja} registrada. "
-            f"Cliente: {self.__cliente.nombre}. "
-            f"Motivo: {self.__motivo}"
+            f"Queja # {self.__numero_queja} registrada. \n"            
         )
 
     def remitir_gerente(self) -> None:

@@ -232,281 +232,191 @@ Pago (abstracta)
 | `ITransportadora` | `recibir_pedido()`, `confirmar_entrega()`, `get_estado_envio()` |
 | `IInventario` | `consultar_producto()`, `actualizar_stock()`, `verificar_disponibilidad()` |
 
-#### Visualización de Pruebas por Clase
+#### Visualización de Pruebas
 
-**Usuario**
+**Usuarios**
 ```
-=== Prueba interactiva: clase Usuario ===
-
--- Registro --
-Usuario registrado: Usuario(id=cli01, contrasena=pass123)
-
--- Validación --
-Acceso concedido. Bienvenido, Eduardo Coa.
-```
-
-**Producto**
-```
-=== Prueba: Producto ===
-
-  PRODUCTO # 101
-  descripcion: Ferrari
-  precio     : $90,000.00
-  stock      : 10
-
-  PRODUCTO # 102
-  descripcion: Lamborghini
-  precio     : $50,000.00
-  stock      : 50
-
-  PRODUCTO # 103
-  descripcion: Porsche
-  precio     : $80,000.00
-  stock      : 25
-
--- Actualizar producto --
-  [101] Ferrari  [102] Lamborghini  [103] Porsche
-Producto actualizado:
-  PRODUCTO # 101
-  descripcion: Ferrari
-  precio     : $95,000.00
-  stock      : 10
+Bienvenido al sistema TeleVentas
+  ----------------------------------------------------
+  Usuario              Rol                Contraseña
+  ----------------------------------------------------
+  cli01                Cliente            pass123
+  age01                Agente Bodega      agent123
+  ger01                Gerente            ger123
+  ----------------------------------------------------
 ```
 
 **Cliente**
 ```
-=== Prueba: clase Cliente ===
+=======================================================
+  TELEVENTAS — Inicio de sesión
+=======================================================
+  Usuario    : cli01
+  Contraseña : pass123
 
-  CLIENTE ID : cli01
-  Nombre     : Eduardo Coa
-  email      : dcoa_37@unisalle.edu.co
-  Direccion  : Calle 47 #6-33
+  Bienvenido/a, Eduardo Coa.
 
--- Crear orden de compra --
-  [101] Ferrari       — $90,000.00
-  [102] Lamborghini   — $50,000.00
-  [103] Porsche       — $80,000.00
+=======================================================
+  MENÚ CLIENTE — Eduardo Coa
+=======================================================
+  1. Consultar catálogo
+  2. Suscribirse al catálogo
+  3. Buscar producto
+  4. Crear orden de compra
+  5. Cancelar una orden
+  6. Presentar una queja
+  0. Cerrar sesión
 
-Queja registrada para el cliente Eduardo Coa.
-Queja #1 remitida al gerente.
-  Cliente: Eduardo Coa.
+  Opción: 1
 
-QUEJA # 1
-  fecha  : 2026-04-05
-  motivo : Producto en mal estado
-  estado : en_revision
-  cliente: Eduardo Coa
-```
+=======================================================
+  CATÁLOGO DE PRODUCTOS
+=======================================================
+  [101] Ferrari  —  $   90,000.00  (stock: 10)
+  [102] Lamborghini  —  $   50,000.00  (stock: 50)
+  [103] Porsche  —  $   80,000.00  (stock: 25)
 
-**Queja**
-```
-=== Prueba: Queja ===
+Opción: 4
 
-Queja 1 registrada. Cliente: Eduardo Coa. Motivo: Demora en entrega
+=======================================================
+  CREAR ORDEN DE COMPRA
+=======================================================
+  [101] Ferrari  —  $   90,000.00
+  [102] Lamborghini  —  $   50,000.00
+  [103] Porsche  —  $   80,000.00
 
-QUEJA # 1
-  fecha  : 2026-04-05
-  motivo : Demora en entrega
-  estado : registrada
-  cliente: Eduardo Coa
+  Código del producto (0 para terminar): 1
+  Producto no encontrado.
 
-Queja #1 remitida al gerente.
-  Cliente: Eduardo Coa.
+  Código del producto (0 para terminar): 101
+  Cantidad de 'Ferrari': 2
 
-QUEJA # 1
-  fecha  : 2026-04-05
-  motivo : Demora en entrega
-  estado : en_revision
-  cliente: Eduardo Coa
-```
-
-**DetallePedido**
-```
-=== Prueba: DetallePedido ===
-
--- Productos disponibles --
-  [101] Ferrari       — $90,000.00
-  [102] Lamborghini   — $50,000.00
-  [103] Porsche       — $80,000.00
-
-  DETALLE
-  producto    : Ferrari
-  cantidad    : 2
-  precio unit : $90,000.00
-  subtotal    : $180,000.00
-```
-
-**PagoTarjeta**
-```
-=== Prueba: PagoTarjeta ===
-
--- Datos de pago --
-  PAGO CON TARJETA
-  referencia : 1001
-  tarjeta    : ****5678
-  titular    : Eduardo Coa
-  vencimiento: 12/26
-  monto      : $190,000.00
-  estado     : pendiente
-
-  PAGO CON TARJETA
-  referencia : 1001
-  tarjeta    : ****5678
-  titular    : Eduardo Coa
-  vencimiento: 12/26
-  monto      : $190,000.00
-  estado     : aprobado
-```
-
-**OrdenCompra**
-```
-=== Prueba: OrdenCompra ===
-
--- Productos disponibles --
-  [101] Ferrari       — $90,000.00
-  [102] Lamborghini   — $50,000.00
+  Código del producto (0 para terminar): 0
 
 -- Resumen de la orden --
-  [101] Ferrari       x1  — $90,000.00
-  [102] Lamborghini   x1  — $50,000.00
-  TOTAL: $140,000.00
+  [101] Ferrari  x2  —  $180,000.00
+  TOTAL: $180,000.00
 
+=======================================================
+  DATOS DE PAGO — Tarjeta de crédito
+=======================================================
+  Número de tarjeta (16 dígitos): 1234567891123456
+  Titular             : eduardo coa
+  Vencimiento (MM/AA) : 05/28
+  CVV (3 dígitos)     : 123
+Pago aprobado. Tarjeta **** **** **** 3456 — monto $180,000.00
 Orden 1001 confirmada con éxito.
 
   ORDEN # 1001
   fecha   : 2026-04-05
   estado  : confirmada
   cliente : Eduardo Coa
-  total   : $140,000.00
+  total   : $180,000.00
   detalle :
-    [101] Ferrari       x1  — $90,000.00
-    [102] Lamborghini   x1  — $50,000.00
+    [101] Ferrari  x2  —  $180,000.00
+
+  Orden pagada exitosamente.
+
+
+Opción: 6
+
+=======================================================
+  REGISTRAR QUEJA
+=======================================================
+  Número de orden: 1001
+  Motivo de la queja: El pedido lleva atrasado 1 semana, lo necesito urgente
+Queja registrada, Cliente: Eduardo Coa.
+Queja # 1 registrada.
+
+Queja #1 remitida al gerente.
+  Cliente: Eduardo Coa.
+
+
+QUEJA # 1
+  fecha  : 2026-04-05
+  motivo : El pedido lleva atrasado 1 semana, lo necesito urgente
+  estado : en_revision
+  cliente: Eduardo Coa
+
 ```
+**Agente Catalogo**
 
-**Pedido**
 ```
-=== Prueba: Pedido ===
+=======================================================
+  TELEVENTAS — Inicio de sesión
+=======================================================
+  Usuario    : age01
+  Contraseña : agent123
 
-  PEDIDO # 5001
-  estado : pendiente
-  orden  : 1001
-  envio  : sin asignar
+  Bienvenido/a, Pedro Martínez.
 
+=======================================================
+  MENÚ AGENTE DE BODEGA — Pedro Martínez
+=======================================================
+  1. Ver órdenes confirmadas
+  2. Empacar pedido
+  3. Asignar transporte a pedido empacado
+  0. Cerrar sesión
+
+  Opción: 1
+
+=======================================================
+  ÓRDENES CONFIRMADAS
+=======================================================
+  [1001] cliente=Eduardo Coa  total=$190,000.00
+
+  Número de orden a consultar (0 para volver): 1001
+  - Ferrari | Cantidad: 1 | Subtotal: $90000.00
+  - Lamborghini | Cantidad: 2 | Subtotal: $100000.00
+  Total: $190000.00
+
+
+
+  Opción: 2
+
+=======================================================
+  ÓRDENES LISTAS PARA EMPACAR
+=======================================================
+  [1001] cliente=Eduardo Coa
+
+  Número de orden a empacar: 1001
+Stock actualizado — producto 101: 10 → 9
+Stock actualizado — producto 102: 50 → 48
+Pedido 5001 empacado. Productos: 2
   PEDIDO # 5001
   estado : empacado
   orden  : 1001
   envio  : sin asignar
 
-Transportadora asignada al pedido 5001.
-Pedido 5001 en despacho.
 
+
+  Opción: 3
+
+=======================================================
+  PEDIDOS EMPACADOS
+=======================================================
+  [5001] orden=1001  cliente=Eduardo Coa
+
+  Número de pedido a despachar: 5001
+Agente Pedro Martínez asignando transporte al pedido 5001.
+Transportadora asignada al pedido 5001.
+Transportadora TransRápido S.A. recibió el pedido 5001.
+Pedido en camino con TransRápido S.A..
+Pedido 5001 en despacho.
   PEDIDO # 5001
   estado : en_despacho
   orden  : 1001
-  envio  : en camino
+  envio  : en_camino
+
 ```
-
-**Transportadora**
-```
-=== Prueba: Transportadora ===
-
-  TRANSPORTADORA # 1
-  empresa : TransRápido S.A.
-  estado  : disponible
-
-Pedido 5001 recibido por TransRápido S.A.
-
-  TRANSPORTADORA # 1
-  empresa : TransRápido S.A.
-  estado  : en camino
-
-Entrega confirmada por TransRápido S.A.
-
-  TRANSPORTADORA # 1
-  empresa : TransRápido S.A.
-  estado  : entregado
-```
-
-**GerenteRelaciones**
-```
-=== Prueba: GerenteRelaciones ===
-
-  GERENTE
-  nombre : Diunis Pérez
-  quejas : 0
-
-Queja #1 recibida por el gerente Diunis Pérez.
-
-QUEJA # 1
-  fecha  : 2026-04-05
-  motivo : Demora en la entrega del pedido
-  estado : en_revision
-  cliente: Eduardo Coa
-
-Quejas recibidas por el gerente: 1
-```
-
-**AgenteBodega**
-```
-=== Prueba interactiva: clase AgenteBodega ===
-
-  AGENTE DE BODEGA
-  nombre  : Pedro Martínez
-  bodega  : 5
-
--- Consultar orden --
-  ORDEN # 1001  |  estado: confirmada  |  total: $140,000.00
-
--- Empacar y asignar transporte --
-Transportadora asignada al pedido 5001.
-Pedido 5001 en despacho.
-
-  PEDIDO # 5001
-  estado : en_despacho
-  orden  : 1001
-  envio  : en camino
-```
-
-**Catalogo**
-```
-=== Prueba: Catalogo ===
-
-  CATALOGO # 1
-  fecha       : 2026-04-05
-  productos   : 3
-  suscriptores: 0
-
-  1. Listar productos
-  2. Buscar producto
-  3. Suscribirse al catálogo
-  0. Salir
-
-  [101] Ferrari       — $90,000.00  (stock: 10)
-  [102] Lamborghini   — $50,000.00  (stock: 50)
-  [103] Porsche       — $80,000.00  (stock: 25)
-```
-
-**Inventario**
-```
-=== Prueba: Inventario ===
-
-  INVENTARIO: Inventario Central
-  endpoint: http://api.televentas.com/inventario
-  productos registrados: 3
-    [101] Ferrari       — $90,000.00  (stock: 10)
-    [102] Lamborghini   — $50,000.00  (stock: 50)
-    [103] Porsche       — $80,000.00  (stock: 25)
-
-  1. Consultar producto
-  2. Verificar disponibilidad
-  3. Actualizar stock
-  0. Salir
-
-  [101] Ferrari  — $90,000.00  (stock: 10)
-  Disponible: Sí
-```
-
 ---
+
+**Agente Catalogo**
+
+```
+
+
+```
 
 ### 5.2 Java
 

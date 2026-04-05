@@ -8,3 +8,7 @@ __pycache__/
 
 # VS Code
 .vscode/
+
+# Archivos compilados de Java
+*.class
+bin/
