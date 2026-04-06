@@ -768,11 +768,76 @@ Sala 'Sala Impresionista' (2 obras):
     Inicio: 1956-06-01  —  Fin: 1956-09-15
     Inicio: 2004-03-10  —  Fin: 2004-07-20
 ```
-**Agente Catalogo**
-```
-```
+
 **Director Museo**
 ```
+============================================================
+  MUSEO — Inicio de sesión
+============================================================
+  Usuario    : director01
+  Contraseña : director789
+
+  Bienvenido/a, director01  [Director del Museo].
+
+============================================================
+  MENÚ DIRECTOR — director01
+============================================================
+  1. Ver salas del museo
+  2. Agregar sala
+  3. Eliminar sala
+  4. Ver museos colaboradores
+  5. Agregar museo colaborador
+  6. Ceder obra a museo colaborador
+  7. Consultar valoración total del catálogo
+  0. Cerrar sesión
+
+  Opción: 1
+
+============================================================
+  SALAS DEL MUSEO
+============================================================
+
+Sala 'Sala Renacimiento' (1 obras):
+  - La Gioconda (Leonardo da Vinci)
+
+Sala 'Sala Barroca' (1 obras):
+  - Las Meninas (Diego Velázquez)
+
+Sala 'Sala Impresionista' (2 obras):
+  - La noche estrellada (Vincent van Gogh)
+  - El pensador (Auguste Rodin)
+
+
+
+  Opción: 4
+
+============================================================
+  MUSEOS COLABORADORES
+============================================================
+  - Museo 'Musée d'Orsay' (Francia)
+
+
+
+  Opción: 6
+
+============================================================
+  CEDER OBRA A MUSEO COLABORADOR
+============================================================
+  [1] Cuadro     'La Gioconda'  —  Leonardo da Vinci  |  Estado: Expuesta
+  [2] Cuadro     'Las Meninas'  —  Diego Velázquez  |  Estado: Expuesta
+  [3] Cuadro     'La noche estrellada'  —  Vincent van Gogh  |  Estado: Expuesta
+  [4] Escultura  'El pensador'  —  Auguste Rodin  |  Estado: Expuesta
+
+  Número de obra a ceder (0 para cancelar): 1
+
+  Museo colaborador:
+  [1] Museo 'Musée d'Orsay' (Francia)
+
+  Número de museo (0 para cancelar): 1
+  Importe de la cesión (€): 25000
+  Fecha inicio de cesión (YYYY-MM-DD): 2026-04-05
+  Fecha fin (YYYY-MM-DD, vacío = indefinida): 2027-07-05
+  'La Gioconda' cedida a 'Musée d'Orsay'. Estado: Cedida
 ```
 ---
 

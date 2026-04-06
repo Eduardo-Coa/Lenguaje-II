@@ -1,26 +1,8 @@
+##  Sistema TeleVentas
 
-[Televentas.pdf](https://github.com/user-attachments/files/26392784/Televentas.pdf)
 
-La empresa TeleVentas desea desarrollar un sistema web para el soporte de compras a 
-distancia, de los productos que la empresa ofrece, por parte de sus clientes. Se prevé que 
-con este sistema, los clientes podrán, fundamentalmente: realizar consultas del catálogo de 
-los productos que se ofrecen, para obtener información acerca de un producto particular 
-(código, descripción, precio, cantidad disponible, etc.); solicitar le envíen periódicamente y 
-por correo electrónico dicho catálogo de productos; ingresar una orden de compra, para que 
-se le envíe un conjunto de productos, ajustándose a un tipo de pago para la misma 
-(actualmente sólo tarjeta de crédito); presentar una queja (por demoras en la entrega de los 
-productos, por ejemplo); y cancelar una orden.
-Adicionalmente, se pretende que los agentes del depósito de la empresa utilicen el nuevo 
-sistema, consultando las órdenes de compra confirmadas, para armar y empaquetar los 
-productos pedidos en dichas órdenes de compra. Asimismo, se debe proveer soporte a estos 
-agentes para determinar la logística para la entrega de cada pedido armado, seleccionando 
-una empresa de transporte apropiada, y delegando a ésta la entrega del pedido 
-correspondiente. Por otra parte, es destacable que la empresa ya posee un sistema de 
-inventario para el control de stock de productos. El nuevo sistema deberá interactuar con éste 
-para, por ejemplo: consultar descripción y precio de productos al tomar órdenes de compra, 
-o bien para actualizar la disponibilidad de productos al armar pedidos. Por otra parte, las 
-quejas recibidas por parte de los clientes son remitidas inmediatamente al gerente de 
-relaciones de la empresa.
+
+![Diagrama de Clases UML](Televentas.jpeg)
 
 ANALISIS
 
@@ -66,40 +48,10 @@ al armar pedidos.
 compra y contiene la información necesaria para procesar el pago del cliente.
 
 
+##  Sistema Museo
 
+![Diagrama de Clases UML](MuseoUML.jpeg)
 
-[Museo UML.pdf](https://github.com/user-attachments/files/26392785/Museo.UML.pdf)
-
-Un museo desea que su Departamento de Informática desarrolle un software para 
-automatizar la gestión de sus obras. Sus requisitos son los siguientes:
-Se debe mantener el catálogo de obras de arte. La obra de arte característica es el cuadro. 
-Pero, además, el museo dispone de esculturas y de otros objetos. Cualquiera de estos tres 
-elementos tiene un autor y pertenece a un periodo. Cada obra es valorada económicamente 
-y se almacena su fecha de creación y su fecha de entrada en el museo. Los cuadros y 
-esculturas tienen un estilo. De los cuadros hay que recoger la técnica y de las esculturas el 
-material. La introducción de datos la realiza el encargado del catálogo. Se debe gestionar la 
-restauración de obras de arte. Una obra pueda estar expuesta o puede estar en restauración. 
-En este último caso hay que recoger el tipo de restauración y la fecha de inicio de la misma. 
-En el caso normal, las obras de arte se restauran automáticamente cada cinco años, por lo 
-que se requiere un proceso diario que indique qué obras tienen que pasar a restauración. Por 
-otro lado, si una obra resulta dañada por alguna causa, se enviará a restauración
-inmediatamente. Cuando se termina una restauración, se almacena la fecha de finalización
-de esta. De realizar estas operaciones se encarga el restaurador jefe. El restaurador jefe debe
-poder consultar todas las restauraciones que se le han
-realizado a cada obra de arte, ordenadas por antigüedad.
-Las obras de arte se pueden ceder a otros museos. Se desea gestionar un listado de museos
-con los que se puede colaborar. Cuando una obra está cedida y es solicitada por otro museo,
-será cedida a este último cuando finalice la cesión al primer museo. Cuando una obra de arte
-se cede a un museo es preciso recoger el importe pagado por esta cesión y el periodo de
-tiempo en que estará cedida. De esta gestión se encarga el director del museo.
-El director del museo debe poder consultar la valoración de todas las obras del museo (la
-suma total).
-El sistema debe disponer de controles de seguridad, por lo que es requisito indispensable que
-todos los usuarios se autentifiquen antes de poder utilizar el software. Los visitantes al museo
-pueden consultar los listados de obras por salas en un monitor suspendido en el vestíbulo
-principal del museo.
-El director del museo debe poder consultar la valoración de todas las obras del museo (la
-suma total).
 
 ANALISIS
 
