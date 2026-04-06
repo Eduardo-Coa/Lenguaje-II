@@ -90,8 +90,15 @@ public class Cuadro extends Obra {
 
     @Override
     public String toString() {
-        return super.toString() +
-               " | Estilo: " + estilo.getValor() +
-               " | Tecnica: " + tecnica.getValor();
+        return obtenerTipo() + "\n " +
+               "Titulo       : " + titulo + "\n " +
+               "Autor        : " + autor + "\n " +
+               "Creacion     : " + fechaCreacion + "\n " +
+               "Periodo      : " + periodo.getValor() + "\n " +
+               "Estilo       : " + estilo.getValor() + "\n " +
+               "Tecnica      : " + tecnica.getValor() + "\n " +
+               "Estado       : " + estado.getValor() + "\n " +
+               "Entrada museo: " + fechaEntradaMuseo + "\n " +
+               String.format("Valoracion   : %.2f EUR", valoracion) + "\n";
     }
 }

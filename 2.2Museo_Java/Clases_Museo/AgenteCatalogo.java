@@ -74,21 +74,6 @@ public class AgenteCatalogo extends Usuario {
     }
 
     /**
-     * Establece la valoracion economica de una obra.
-     *
-     * @param obra  Obra a valorar.
-     * @param valor Valoracion en euros; debe ser no negativa.
-     * @throws SecurityException        si el agente no esta autenticado.
-     * @throws IllegalArgumentException si el valor es negativo.
-     */
-    public void valorarObra(Obra obra, double valor) {
-        if (!autenticado) {
-            throw new SecurityException("Debe autenticarse para valorar obras.");
-        }
-        obra.setValoracion(valor);
-    }
-
-    /**
      * Registra un reporte de dano sobre una obra y cambia su estado a DANADA.
      *
      * @param obra        Obra danada.

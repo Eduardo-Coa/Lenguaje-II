@@ -45,6 +45,14 @@ public class Otra extends Obra {
 
     @Override
     public String toString() {
-        return super.toString() + " | Tipo: " + tipoDescripcion;
+        return obtenerTipo() + "\n " +
+               "Titulo       : " + titulo + "\n " +
+               "Autor        : " + autor + "\n " +
+               "Creacion     : " + fechaCreacion + "\n " +
+               "Periodo      : " + periodo.getValor() + "\n " +
+               "Tipo         : " + tipoDescripcion + "\n " +
+               "Estado       : " + estado.getValor() + "\n " +
+               "Entrada museo: " + fechaEntradaMuseo + "\n " +
+               String.format("Valoracion   : %.2f EUR", valoracion) + "\n";
     }
 }

@@ -117,6 +117,11 @@ public abstract class Obra {
     /** @return La lista de restauraciones registradas. */
     public List<Object> getRestauraciones() { return restauraciones; }
 
+    /** Agrega una entrada de restauracion preestablecida a la obra. */
+    public void agregarRestauracion(java.util.Map<String, Object> restauracion) {
+        restauraciones.add(restauracion);
+    }
+
     /** @return La lista de reportes de danos. */
     public List<Object> getReportesDanos() { return new ArrayList<>(reportesDanos); }
 
@@ -175,10 +180,13 @@ public abstract class Obra {
 
     @Override
     public String toString() {
-        return obtenerTipo() + " | '" + titulo + "' de " + autor +
-               " [" + periodo.getValor() + "] | Estado: " + estado.getValor() +
-               " | Creacion: " + fechaCreacion +
-               " | Entrada museo: " + fechaEntradaMuseo +
-               String.format(" | Valoracion: %.2f EUR", valoracion);
+        return obtenerTipo() + "\n " +
+               "Titulo       : " + titulo + "\n " +
+               "Autor        : " + autor + "\n " +
+               "Creacion     : " + fechaCreacion + "\n " +
+               "Periodo      : " + periodo.getValor() + "\n " +
+               "Estado       : " + estado.getValor() + "\n " +
+               "Entrada museo: " + fechaEntradaMuseo + "\n " +
+               String.format("Valoracion   : %.2f EUR", valoracion) + "\n";
     }
 }

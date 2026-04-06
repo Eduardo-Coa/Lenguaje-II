@@ -63,6 +63,14 @@ public class Escultura extends Obra {
 
     @Override
     public String toString() {
-        return super.toString() + " | Material: " + material.getValor();
+        return obtenerTipo() + "\n " +
+               "Titulo       : " + titulo + "\n " +
+               "Autor        : " + autor + "\n " +
+               "Creacion     : " + fechaCreacion + "\n " +
+               "Periodo      : " + periodo.getValor() + "\n " +
+               "Material     : " + material.getValor() + "\n " +
+               "Estado       : " + estado.getValor() + "\n " +
+               "Entrada museo: " + fechaEntradaMuseo + "\n " +
+               String.format("Valoracion   : %.2f EUR", valoracion) + "\n";
     }
 }
