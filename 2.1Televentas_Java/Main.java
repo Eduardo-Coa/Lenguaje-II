@@ -48,6 +48,34 @@ public class Main {
         inventario.registrarProducto(102, "Lamborghini", 50_000.00, 50);
         inventario.registrarProducto(103, "Porsche",     80_000.00, 25);
 
+        // --- Datos iniciales preestablecidos ---
+        Cliente clienteInicial     = (Cliente)            usuarios.get(0);
+        GerenteRelaciones gerenteInicial = (GerenteRelaciones) usuarios.get(2);
+
+        java.io.PrintStream originalOut = System.out;
+        try { System.setOut(new java.io.PrintStream(new java.io.ByteArrayOutputStream())); }
+        catch (Exception ignored) {}
+
+        // Orden inicial #1001
+        List<DetallePedido> detallesIniciales = new ArrayList<>();
+        detallesIniciales.add(new DetallePedido(prod1, 1));
+        detallesIniciales.add(new DetallePedido(prod2, 2));
+        double totalInicial = detallesIniciales.stream().mapToDouble(DetallePedido::subtotal).sum();
+        PagoTarjeta pagoInicial = new PagoTarjeta(1001, totalInicial, "1234567890123456", "Eduardo Coa", "12/26", "123");
+        OrdenCompra ordenInicial = new OrdenCompra(1001, clienteInicial, pagoInicial, detallesIniciales);
+        ordenInicial.confirmar();
+        ordenes.add(ordenInicial);
+        contadorOrden = 1001;
+
+        // Queja inicial #1
+        Queja quejaInicial = clienteInicial.presentarQueja(1, "El pedido llego con retraso de 3 dias.");
+        quejaInicial.registrarQueja();
+        quejaInicial.remitirGerente();
+        gerenteInicial.recibirQueja(quejaInicial);
+        contadorQueja = 2;
+
+        System.setOut(originalOut);
+
         System.out.println("\n  Bienvenido al sistema TeleVentas");
         separador("");
         System.out.printf("  %-20s %-18s %s%n", "Usuario", "Rol", "Contrasena");
@@ -131,6 +159,7 @@ public class Main {
                     }
                 }
                 case "2" -> {
+                    separador("SUSCRIPCIÓN AL CATÁLOGO");
                     try {
                         catalogo.suscribir(cliente);
                         catalogo.enviarCatalogo(cliente);
@@ -139,6 +168,7 @@ public class Main {
                     }
                 }
                 case "3" -> {
+                    separador("BÚSQUEDA DE PRODUCTOS");
                     System.out.print("  Termino de busqueda: ");
                     String termino = sc.nextLine().trim();
                     for (Producto p : catalogo.buscarProducto(termino)) {
@@ -177,7 +207,15 @@ public class Main {
                 System.out.println("  Error: " + e.getMessage());
             }
         }
-        if (detalles.isEmpty()) { System.out.println("  Orden cancelada (sin productos)."); return; }
+        if (detalles.isEmpty()) { System.out.println("  Sin productos, orden no creada."); return; }
+
+        System.out.println("\n-- Resumen de la orden --");
+        for (DetallePedido d : detalles)
+            System.out.printf("  [%d] %-14s  x%d  —  $%,.2f%n",
+                d.getProducto().getNumeroProducto(), d.getProducto().getDescripcion(),
+                d.getCantidad(), d.subtotal());
+        System.out.printf("  TOTAL: $%,.2f%n",
+            detalles.stream().mapToDouble(DetallePedido::subtotal).sum());
 
         separador("DATOS DE PAGO — Tarjeta de credito");
         try {
@@ -192,12 +230,14 @@ public class Main {
             orden.confirmar();
             ordenes.add(orden);
             System.out.println(orden);
+            System.out.println("  Orden pagada exitosamente.");
         } catch (IllegalArgumentException e) {
             System.out.println("  Error: " + e.getMessage());
         }
     }
 
     private static void cancelarOrden(Cliente cliente) {
+        separador("CANCELAR ORDEN");
         List<OrdenCompra> misOrdenes = ordenes.stream()
             .filter(o -> o.getCliente().getUserId().equals(cliente.getUserId()))
             .toList();
@@ -219,10 +259,17 @@ public class Main {
     }
 
     private static void presentarQueja(Cliente cliente) {
-        System.out.print("  Motivo de la queja: ");
-        String motivo = sc.nextLine().trim();
-        if (motivo.isEmpty()) { System.out.println("  El motivo no puede estar vacio."); return; }
+        separador("REGISTRAR QUEJA");
         try {
+            System.out.print("  Numero de orden (ej: 1001): ");
+            int num = Integer.parseInt(sc.nextLine().trim());
+            OrdenCompra orden = ordenes.stream()
+                .filter(o -> o.getNumeroOrden() == num && o.getCliente().getUserId().equals(cliente.getUserId()))
+                .findFirst().orElse(null);
+            if (orden == null) { System.out.println("  Orden no encontrada."); return; }
+            System.out.print("  Motivo de la queja: ");
+            String motivo = sc.nextLine().trim();
+            if (motivo.isEmpty()) { System.out.println("  El motivo no puede estar vacio."); return; }
             Queja queja = cliente.presentarQueja(contadorQueja++, motivo);
             queja.registrarQueja();
             queja.remitirGerente();
@@ -231,6 +278,7 @@ public class Main {
                 .map(u -> (GerenteRelaciones) u)
                 .findFirst()
                 .ifPresent(g -> g.recibirQueja(queja));
+            System.out.println("\n" + queja);
         } catch (IllegalArgumentException e) {
             System.out.println("  Error: " + e.getMessage());
         }

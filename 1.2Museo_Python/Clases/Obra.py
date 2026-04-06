@@ -190,9 +190,12 @@ class Obra(ABC):
 
     def __str__(self) -> str:
         return (
-            f"{self.obtener_tipo()} | '{self._titulo}' de {self._autor} "
-            f"[{self._periodo.value}] | Estado: {self._estado.value} "
-            f"| Creación: {self._fecha_creacion} "
-            f"| Entrada museo: {self._fecha_entrada_museo} "
-            f"| Valoración: {self._valoracion:.2f} €"
+            f"{self.obtener_tipo()}\n "
+            f"Titulo       : {self._titulo}\n "
+            f"Autor        : {self._autor}\n "
+            f"Creación     : {self._fecha_creacion}\n "
+            f"Periodo      : {self._periodo.value}\n "
+            f"Estado       : {self._estado.value}\n "
+            f"Entrada museo: {self._fecha_entrada_museo}\n "
+            f"Valoración   : {self._valoracion:.2f} €\n"
         )

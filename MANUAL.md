@@ -458,6 +458,8 @@ Pedido 5001 en despacho.
 | `__str__` | `toString()` con `@Override` |
 | Constantes de clase `str` | `public static final String` |
 
+
+
 #### Interfaces Java
 
 ```java
@@ -527,6 +529,251 @@ Obra (abstracta)
 | `TecnicaCuadro` | `FRESCO`, `TEMPERA`, `OLEO`, `ACUARELA`, `ACRILICO` |
 | `MaterialEscultura` | `MARMOL`, `GRANITO`, `BRONCE`, `ORO`, `CONCRETO`, `MADERA` |
 
+#### Visualización de Pruebas
+
+**Usuarios**
+```
+  Bienvenido al sistema del Museo
+  ----------------------------------------------------
+  Usuario              Rol                    Contraseña
+  ----------------------------------------------------
+  visitante01          Visitante              vis123
+  agente_cat01         Agente de Catálogo     admin123
+  restaurador01        Agente Restaurador     rest456
+  director01           Director del Museo     director789
+  ----------------------------------------------------
+
+```
+**Visitante**
+```
+============================================================
+  MENÚ VISITANTE — visitante01
+============================================================
+  1. Ver salas del museo
+  2. Consultar obras por sala
+  3. Buscar en catálogo
+  0. Cerrar sesión
+
+  Opción: 1
+
+============================================================
+  SALAS DEL MUSEO
+============================================================
+
+Sala 'Sala Renacimiento' (1 obras):
+  - La Gioconda (Leonardo da Vinci)
+
+Sala 'Sala Barroca' (1 obras):
+  - Las Meninas (Diego Velázquez)
+
+Sala 'Sala Impresionista' (2 obras):
+  - La noche estrellada (Vincent van Gogh)
+  - El pensador (Auguste Rodin)
+
+
+
+
+  Opción: 3
+
+============================================================
+  BUSCAR EN CATÁLOGO
+============================================================
+  1. Por autor
+  2. Por período
+  3. Por tipo
+  4. Por estado
+
+  Opción: 2
+  [1] Renacimiento (siglos XV-XVI)
+  [2] Barroco (siglo XVII)
+  [3] Rococó (siglo XVIII)
+  [4] Neoclasicismo (siglos XVIII-XIX)
+  [5] Romanticismo (siglo XIX)
+  [6] Realismo (siglo XIX)
+  [7] Impresionismo (finales del siglo XIX)
+  [8] Arte Moderno y Contemporáneo (siglos XX-XXI)
+  Período: 1
+
+  Resultados (1):
+  - Cuadro
+ Titulo       : La Gioconda
+ Autor        : Leonardo da Vinci
+ Creación     : 1503-01-01
+ Periodo      : Renacimiento (siglos XV-XVI)
+ Estilo       : Renacimiento (s. XV-XVI)
+ Técnica      : Pintura al Óleo
+ Estado       : Expuesta
+ Entrada museo: 1797-08-01
+ Valoración   : 800000000.00 €
+
+```
+**Agente Catalogo**
+```
+============================================================
+  MENÚ AGENTE CATÁLOGO — agente_cat01
+============================================================
+  1. Ver catálogo completo
+  2. Registrar nueva obra
+  3. Asignar obra a sala
+  4. Reportar daño en obra
+  5. Dar baja obra
+  0. Cerrar sesión
+
+  Opción: 2
+
+============================================================
+  REGISTRAR NUEVA OBRA
+============================================================
+  Tipo de obra:
+  [1] Cuadro
+  [2] Escultura
+  [3] Otra
+
+  Opción: 1
+  Título       : el hombre de espaldas
+  Autor        : eduardo coa
+
+  Período histórico:
+  [1] Renacimiento (siglos XV-XVI)
+  [2] Barroco (siglo XVII)
+  [3] Rococó (siglo XVIII)
+  [4] Neoclasicismo (siglos XVIII-XIX)
+  [5] Romanticismo (siglo XIX)
+  [6] Realismo (siglo XIX)
+  [7] Impresionismo (finales del siglo XIX)
+  [8] Arte Moderno y Contemporáneo (siglos XX-XXI)
+  Período: 8
+  Fecha de creación (YYYY-MM-DD): 2018-05-06
+  Fecha entrada al museo (YYYY-MM-DD): 2022-04-18
+
+  Estilo artístico:
+  [1] Renacimiento (s. XV-XVI)
+  [2] Barroco (1600-1750)
+  [3] Rococó (1720-1780)
+  [4] Neoclasicismo (1750-1820)
+  [5] Romanticismo (1790-1880)
+  [6] Realismo (1840-1870)
+  [7] Impresionismo (1872-1882)
+  [8] Postimpresionismo (1880-1910)
+  [9] Art Nouveau (1890-1905)
+  [10] Fauvismo (1905-1908)
+  [11] Expresionismo (1905-1933)
+  [12] Cubismo (1907-1917)
+  [13] Futurismo (1909-1920)
+  [14] Dadaísmo (1916-1923)
+  [15] Surrealismo (años 20-30)
+  [16] Expresionismo Abstracto (1940s-50s)
+  [17] Pop Art (1950s-60s)
+  [18] Minimalismo (1960s)
+  [19] Hiperrealismo (1970s-presente)
+  [20] Arte Conceptual (1960s-presente)
+  Estilo: 19
+
+  Técnica:
+  [1] Pintura al Fresco
+  [2] Temple o Témpera
+  [3] Pintura al Óleo
+  [4] Encáustica
+  [5] Acuarela
+  [6] Acrílico
+  Técnica: 6
+  Valoración (€): 25000
+
+  Obra registrada:
+  Cuadro
+ Titulo       : el hombre de espaldas
+ Autor        : eduardo coa
+ Creación     : 2018-05-06
+ Periodo      : Arte Moderno y Contemporáneo (siglos XX-XXI)
+ Estilo       : Hiperrealismo (1970s-presente)
+ Técnica      : Acrílico
+ Estado       : Expuesta
+ Entrada museo: 2022-04-18
+ Valoración   : 25000.00 €
+```
+**Agente Restaurador**
+```
+============================================================
+  MUSEO — Inicio de sesión
+============================================================
+  Usuario    : restaurador01
+  Contraseña : rest456
+
+  Bienvenido/a, restaurador01  [Agente Restaurador].
+  Bienvenido/a, restaurador01  [Agente Restaurador].
+
+============================================================
+  MENÚ RESTAURADOR — restaurador01
+============================================================
+  1. Ver obras pendientes de restauración
+  2. Iniciar restauración
+  3. Finalizar restauración
+  4. Ver historial de restauraciones de una obra
+  0. Cerrar sesión
+
+  Opción: 1
+
+============================================================
+  OBRAS QUE NECESITAN RESTAURACIÓN
+============================================================
+  - 'La Gioconda'  (Leonardo da Vinci)  |  Estado: Expuesta
+  - 'Las Meninas'  (Diego Velázquez)  |  Estado: Expuesta
+  - 'La noche estrellada'  (Vincent van Gogh)  |  Estado: Expuesta
+  - 'El pensador'  (Auguste Rodin)  |  Estado: Expuesta
+
+============================================================
+  MENÚ RESTAURADOR — restaurador01
+============================================================
+  1. Ver obras pendientes de restauración
+  2. Iniciar restauración
+  3. Finalizar restauración
+  4. Ver historial de restauraciones de una obra
+  0. Cerrar sesión
+
+  Opción: 2
+
+============================================================
+  INICIAR RESTAURACIÓN
+============================================================
+  [1] Cuadro     'La Gioconda'  —  Leonardo da Vinci  |  Estado: Expuesta
+  [2] Cuadro     'Las Meninas'  —  Diego Velázquez  |  Estado: Expuesta
+  [3] Cuadro     'La noche estrellada'  —  Vincent van Gogh  |  Estado: Expuesta
+  [4] Escultura  'El pensador'  —  Auguste Rodin  |  Estado: Expuesta
+
+  Número de obra a restaurar (0 para cancelar): 2
+  Restauración iniciada. Estado: En restauración
+
+============================================================
+  MENÚ RESTAURADOR — restaurador01
+============================================================
+  1. Ver obras pendientes de restauración
+  2. Iniciar restauración
+  3. Finalizar restauración
+  4. Ver historial de restauraciones de una obra
+  0. Cerrar sesión
+
+  Opción: 4
+
+============================================================
+  HISTORIAL DE RESTAURACIONES
+============================================================
+  [1] Cuadro     'La Gioconda'  —  Leonardo da Vinci  |  Estado: Expuesta
+  [2] Cuadro     'Las Meninas'  —  Diego Velázquez  |  Estado: En restauración
+  [3] Cuadro     'La noche estrellada'  —  Vincent van Gogh  |  Estado: Expuesta
+  [4] Escultura  'El pensador'  —  Auguste Rodin  |  Estado: Expuesta
+
+  Número de obra a consultar (0 para cancelar): 1
+
+  Restauraciones de 'La Gioconda':
+    Inicio: 1956-06-01  —  Fin: 1956-09-15
+    Inicio: 2004-03-10  —  Fin: 2004-07-20
+```
+**Agente Catalogo**
+```
+```
+**Director Museo**
+```
+```
 ---
 
 ### 6.2 Java

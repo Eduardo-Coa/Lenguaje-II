@@ -42,8 +42,17 @@ class Otra(Obra):
     # --- Representación ---
 
     def __str__(self) -> str:
-        base = super().__str__()
-        return f"{base} | Tipo: {self._tipo_descripcion}"
+        return (
+            f"{self.obtener_tipo()}\n "
+            f"Titulo       : {self._titulo}\n "
+            f"Autor        : {self._autor}\n "
+            f"Creación     : {self._fecha_creacion}\n "
+            f"Periodo      : {self._periodo.value}\n "
+            f"Tipo         : {self._tipo_descripcion}\n "
+            f"Estado       : {self._estado.value}\n "
+            f"Entrada museo: {self._fecha_entrada_museo}\n "
+            f"Valoración   : {self._valoracion:.2f} €\n"
+        )
 
 
 # ---------------------------------------------------------------------------

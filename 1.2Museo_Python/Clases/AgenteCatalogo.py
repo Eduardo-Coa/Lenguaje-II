@@ -39,14 +39,6 @@ class AgenteCatalogo(Usuario):
         obra.sala = sala
         sala.agregar_obra(obra)
 
-    def valorar_obra(self, obra, valor: float) -> None:
-        """Establece la valoración económica de una obra."""
-        if not self._autenticado:
-            raise PermissionError("Debe autenticarse para valorar obras.")
-        if valor < 0:
-            raise ValueError("La valoración no puede ser negativa.")
-        obra.valoracion = valor
-
     def reportar_danio(self, obra, descripcion: str) -> None:
         """Registra un reporte de daño sobre una obra y cambia su estado a DAÑADA."""
         if not self._autenticado:

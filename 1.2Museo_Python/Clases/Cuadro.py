@@ -90,8 +90,20 @@ class Cuadro(Obra):
     # --- Representación ---
 
     def __str__(self) -> str:
-        base = super().__str__()
-        return f"{base} | Estilo: {self._estilo.value} | Técnica: {self._tecnica.value}"
+        return (
+            f"{self.obtener_tipo()}\n "
+            f"Titulo       : {self._titulo}\n "
+            f"Autor        : {self._autor}\n "
+            f"Creación     : {self._fecha_creacion}\n "
+            f"Periodo      : {self._periodo.value}\n "
+            f"Estilo       : {self._estilo.value}\n "
+            f"Técnica      : {self._tecnica.value}\n "
+            f"Estado       : {self._estado.value}\n "
+            f"Entrada museo: {self._fecha_entrada_museo}\n "
+            f"Valoración   : {self._valoracion:.2f} €\n"
+        )
+    
+
 
 
 # ---------------------------------------------------------------------------
@@ -115,9 +127,9 @@ if __name__ == "__main__":
     )
 
     print(cuadro)
-    print(f"\nTipo     : {cuadro.obtener_tipo()}")
-    print(f"Estilo   : {cuadro.estilo.value}")
-    print(f"Técnica  : {cuadro.tecnica.value}")
+    print(f"\nTipo       : {cuadro.obtener_tipo()}")
+    print(f"Estilo       : {cuadro.estilo.value}\n")
+    print(f"Técnica      : {cuadro.tecnica.value}\n")
 
     nueva_val = input("\nIngresa una nueva valoración (€): ")
     cuadro.valoracion = float(nueva_val)
